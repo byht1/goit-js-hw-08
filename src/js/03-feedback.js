@@ -10,10 +10,20 @@ reestablish();
 form.addEventListener('input', throttle(eventInput, 500));
 
 form.addEventListener('submit', () => {
+  conclusion();
   event.preventDefault();
   event.target.reset();
   localStorage.removeItem('feedback-form-state');
 });
+
+function conclusion() {
+  const {
+    elements: { email, message },
+  } = event.currentTarget;
+
+  console.log('🚀 ~ email', email.value);
+  console.log('🚀 ~ message', message.value);
+}
 
 function eventInput(event) {
   {
